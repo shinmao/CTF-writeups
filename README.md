@@ -1,2 +1,8 @@
 # CTF-writeups
-Playing some CTF &lt;3
+Playing some CTF :heart:  
+
+## For my lovely tips  
+**How to find '/bin/sh' offset in some elf**
+```
+ROPgadget --binary ./elf --string '/bin/sh'
+```
