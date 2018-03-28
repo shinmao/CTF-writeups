@@ -44,6 +44,12 @@ if (empty($_GET['str'])) {
 ## Evil Config Writing
 
 ## Unicorn and Lion
+This is a very classic challenge for Union-based mysql injection.  
+I won't keep source code of file in this place.  
+You need to find each answer of problem from the **faq.php**.  
+What's worth paying attention to is that you need to separate each results of answer.  
+Here is the trick ```group_concat(column name separator 'x')```  
+that ```x``` can help you separate each results.
 
 ## Shorter shell
 [Enjoy my writeup on my blog](https://shinmao.github.io/2018/02/20/A-tiny-shell/)
