@@ -1,2 +1,0 @@
-socat tcp-l:50216,reuseaddr,fork exec:/home/babyfs/babyfs,pty,ctty,echo=0
-
