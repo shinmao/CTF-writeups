@@ -37,8 +37,6 @@ if (empty($_GET['str'])) {
 ?>
 ```
 
-## Giv mE a Creativ shell
-
 ## PHP un Siri ME
 
 ## Evil Config Writing
