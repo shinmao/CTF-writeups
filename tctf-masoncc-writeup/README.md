@@ -57,7 +57,7 @@ that ```x``` can help you separate each results.
 Level: :star::star::star:  
 [Enjoy my writeup on my blog](https://shinmao.github.io/2018/02/20/A-tiny-shell/)  
 In fact, there is a classic solution to such kind of challenge: **Reverse shell**  
-Thanks to @chris-issing provides his payload: 
+Thanks to @chris-issing provides his [payload](https://github.com/shinmao/CTF-writeups/blob/master/tctf-masoncc-writeup/shorter-shell-others/chriss-issing.rb) 
 
 ## Peasy shell not PHP
 Level: :star:  
