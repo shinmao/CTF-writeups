@@ -2,7 +2,7 @@
 這次比賽個人覺得難度沒有很高(因為我至少有頭緒:joy:)，題目質量都能確保讓我們學到東西， 下面紀錄一些賽後解出來的題目...
 
 ## Lock Pick Duck (1)
-[source code]()  
+[source code](https://github.com/shinmao/CTF-writeups/blob/master/vxcon2018/lpd_source.php)  
 payload滿足三個條件就能拿到第一把flag  
 ```php
 if(@preg_match("/^$U,$P$/m", $csvdb)){
@@ -86,4 +86,5 @@ foreach ($arr1 as $value1) {
 
 ## Reference
 1. [Kaibro WP](https://github.com/w181496/CTF/tree/master/vxcon2018)  
-2. [官方詳解](https://github.com/ozetta/ctf-challenges)
+2. [官方詳解](https://github.com/ozetta/ctf-challenges)  
+3. [一些不包含数字和字母的webshell](https://www.leavesongs.com/PENETRATION/webshell-without-alphanum.html)
