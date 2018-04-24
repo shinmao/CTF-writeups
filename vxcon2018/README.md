@@ -36,6 +36,10 @@ if(@preg_match("/^$U,$P$/m", $csvdb)){
 
 ## Lock Pick Duck (2)
 繼上題一樣的source code，payload滿足六個條件就能拿到第二把flag  
+第二題我目前最多只能構造到四個條件，xpath的條件都跟其他條件衝突  
+不過也學到不少關於`preg_match`跟正則的關係  
+payload: `http://trick.fflm.ml/?username=(a)|' union select 'a'--&password=a`  
+必須重複刷新直到csv架構中出現**a**字元：`Flag 1: vxctf{y0u_d0_kn0w_InjectI0n_101}`
 
 
 ## Patch Peep Huck (w)
@@ -55,6 +59,7 @@ $_FILES[!!$l='tmp_name']
 解開了代碼的疑惑，再來看題目想幹嘛：  
 上傳FILE，限制FILE的size，並且將FILE的內容join成字串做匹配  
 典型的上傳webshell題，內容不能帶有字母，數字，底線  
+(上傳檔案不一定要用burp代理，也可以自己寫個upload form，把action設給題目就好)  
 一開始我卡在**底線的部分**很久，賽後看了@kaibro引用了在@l4w中的技巧 -> 表情符號  
 終於自己寫出了個payload：  
 ```php
