@@ -39,7 +39,8 @@ if(@preg_match("/^$U,$P$/m", $csvdb)){
 第二題我目前最多只能構造到四個條件，xpath的條件都跟其他條件衝突  
 不過也學到不少關於`preg_match`跟正則的關係  
 payload: `http://trick.fflm.ml/?username=(a)|' union select 'a'--&password=a`  
-必須重複刷新直到csv架構中出現**a**字元：`Flag 1: vxctf{y0u_d0_kn0w_InjectI0n_101}`
+必須重複刷新直到csv架構中出現**a**字元：`Flag 1: vxctf{y0u_d0_kn0w_InjectI0n_101}`  
+![](https://github.com/shinmao/CTF-writeups/blob/master/vxcon2018/screenshot/LDP4conditions.png)
 
 
 ## Patch Peep Huck (w)
