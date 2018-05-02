@@ -1,6 +1,6 @@
 # Asis 2018 Writeups
 
-## Buy flag
+# Buy flag
 這題似乎是這次比賽裡最簡單的，我卻沒有做出來 :(  
 首先是要**養成看request的習慣**，之前都懶惰沒有把burp開出來代理一下，可能做題會更有方向  
 比賽時拿到js的代碼開始審計時就一直在找頁面上的注入點...
@@ -31,7 +31,7 @@ $(document).ready(function() {
 ![buy-flag](https://github.com/shinmao/CTF-writeups/blob/master/Asis2018/screenshoot/buy-flag.png)  
 `{"card":[{"name":"asis","count":1}],"coupon":""}`裡面可以修改的點只有count了，但是如果把count改0的話會出現必須大於0的警告。為了讓flag的credit降低為0，經過一番折騰終於找到了`NaN`，不被json所識別的東西，被轉成0給處理了！  
 
-## Nice Code
+# Nice Code
 這題第一關是找源碼，剛開始覺得實在太猜了，怎麼可以長在`/index.php/index.php`，賽後發現不斷發送request時`/admin/admin`的URL會不斷疊加，我想這大概就是提示吧:)  
 接下來的源碼才是這題的重點：  
 ```php
@@ -69,7 +69,33 @@ if($__ni === $g_s & $__ni[0] != 'admin'){
 ![](https://github.com/shinmao/CTF-writeups/blob/master/Asis2018/screenshoot/nice_code.png)  
 好一個藏在`/var/flag`的`ASIS{f52c5a0cf980887bdac6ccaebac0e8428bfb8b83}`  
 這邊我特別推薦這部教學影片 [Vlog #003: old PHP and array===array](https://www.youtube.com/watch?v=8fGigwN_E-U)  
-以下是PHP的修補紀錄 [PHP #69892](https://bugs.php.net/bug.php?id=69892)
+以下是PHP的修補紀錄 [PHP #69892](https://bugs.php.net/bug.php?id=69892)  
+
+# Good WAF
+題目一開始出現的提示`GET news by object (base64(json_object)) parameter`  
+提示讓我們傳送名叫`object`的`base64(json_object)`  
+於是我先傳送個`object={"1":"1"}`看看，base64加密後是`object=eyIxIjoiMSJ9`，頁面返回結果是：  
+```php
+Notice: Undefined property: stdClass::$data in /var/www/html/index.php on line 37
+```
+於是我就把payload換成`object={"data":"1"}`，base64加密後是`object=eyJkYXRhIjoiMSJ9`，頁面返回結果是`News ID: 1`。  
+這時候就想來個**sql injection**，把payload換成`object={"data":"1'"}`，頁面就返回了WAF生人勿近的頁面 XD  
+比賽的時候沒有成功繞過，賽後才看了writeup，發現有人用`json_beautifier`就給繞過了！核心觀念就是換行，開始用**union based**試...  
+union based需要同樣的column數，所以我先用`order by`來確認一下  
+```php
+object={
+"data":"' order by 3#"
+}
+// object=ewoiZGF0YSI6ICInIG9yZGVyIGJ5IDMjIgp9
+```
+當我新增到3時，頁面出現了`Notice: Trying to get property of non-object in /var/www/html/index.php on line 45
+News not found.`，所以確認了payload樣子類似`union select 1,xxxxx from`，接下來的步驟就很簡單了  
+在`credentials`的表中找到唯一的使用者`valid_user`：`md5(password)`，在`access_logs`的表中找到用`/?action=log-in`的登入方式  
+最後一步拿flag http://167.99.12.110/?action=log-in&credentials[0]=valid_user&credentials[1]=password  
+flag: `ASIS{e279aaf1780c798e55477a7afc7b2b18}`  
+
+非預期解法：`.index.php.swp`直接拿源碼
+
 
 ## Reference
 * [Vlog #003: old PHP and array===array](https://www.youtube.com/watch?v=8fGigwN_E-U)  
