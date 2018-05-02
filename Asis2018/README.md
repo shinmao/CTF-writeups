@@ -66,10 +66,11 @@ if($__ni === $g_s & $__ni[0] != 'admin'){
 接下來的關卡就簡單多了，我們先不用管`$k_Jk`是什麼鬼，看到第二個scope：`strlen($__dgi)>17 && $_p==3`，`x`的要求是大於17個字的長度，要讓`$_p==3`我們要讓整個迴圈跑三次，也就是`$_GET`裡面要有三個參數。  
 於是除了胡亂補上一個參數，剩下一個我就在裡面構造了shell  
 這邊有個小問題，關於`$k_Jk`是在做啥我無從猜測，所以只能依照他的提示來試  
-![]()  
+![](https://github.com/shinmao/CTF-writeups/blob/master/Asis2018/screenshoot/nice_code.png)  
 好一個藏在`/var/flag`的`ASIS{f52c5a0cf980887bdac6ccaebac0e8428bfb8b83}`  
 這邊我特別推薦這部教學影片 [Vlog #003: old PHP and array===array](https://www.youtube.com/watch?v=8fGigwN_E-U)  
 以下是PHP的修補紀錄 [PHP #69892](https://bugs.php.net/bug.php?id=69892)
 
 ## Reference
-
+* [Vlog #003: old PHP and array===array](https://www.youtube.com/watch?v=8fGigwN_E-U)  
+* [PHP #69892](https://bugs.php.net/bug.php?id=69892)
