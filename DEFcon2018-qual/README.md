@@ -46,3 +46,15 @@ echo ini_get('open_basedir')
 回傳得到的是`/var/www/html`  
 好，為啥說這道題目不太U呢，其實我最後根本沒試著繞過`open_basedir`，我最後在瞎試`echo exec('../flag')`時就成功了！  
 這題的flag就是`OOO{Fortunately_php_has_some_rock_solid_defense_in_depth_mecanisms,_so-everything_is_fine.}`  
+
+# exzendtential-crisis
+這題我在透過LFI拿到源碼後就卡住了，有線索知道用username為`sarte`的使用者登入就有權限看到flag，但是有太多疑惑了...  
+1. 漏洞在哪兒？看起來很像`sqlinj`，但是哪一種sql會影響到怎麼bypass  
+2. 有些未知的function，像是`login.php`裡的`check_credentials`，我只有看到呼叫，沒有看到內容的src，可以推測內容就在他給的extension裡，可是我跟逆向不合啊:sweat:  
+賽後再看過我朋友的wp後了解了一下思路：  
+透過`php.ini`找一下`mydb.so`的位置，並且用LFI把它載下來  
+逆向後會發現引擎是`sqlite`和`sarte`被加密過的帳密  
+接下來更是pwn的範疇，做了個overflow  
+
+# Feedback
+蠻多人覺得這次題目出壞了，以我個人的角度而言，這次的比賽的確放了太多需要猜測以及暴力破解的題目。不過這次比賽卻激發出我新的想法：原來web和其他領域可以結合成這麼有創意的題目，也因此我這次做題目上總是很快就不知如何下手....  
