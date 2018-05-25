@@ -101,6 +101,25 @@ GET FLAG!!
 ![](https://github.com/shinmao/CTF-writeups/blob/master/RCTF2018/screenshot/amp.png)  
 
 # Web - r-cursive
+這題有兩個關卡:  
+1. 繞過regex  
+2. 沙箱脫逸  
+首先來解讀regex  
+```php
+/[^\W_]+\((?R)?\)/
+```
+前面的`[^\W_]`是指任意字但是不能為非字母,非數字,非底線的字元  
+後面`(?R)?`就很有意思了,我也是賽後找到教學才懂的,我們要拆解成`(?R)`和`?`兩部分: 我們可以把這個recursive的正則理解成**paste pattern**,然後再套上第二部分的`?`代表0個或1個,整個正則就變成下面這副德性:  
+```php
+/[^\W_]+\([^\W_]+\([^\W_]+\((?R)?\)\)\)/
+```
+關於這部分我非常推薦這篇文章[Recursive Regular Expressions](http://www.rexegg.com/regex-recursion.html)  
+再來就是第二關的沙箱脫逸  
+賽中其實我也在`phpinfo`的頁面花了非常多的時間找線索,無奈與**沙箱逃逸**真的沒有交過手 :cry:  
+我可以看到`open_basedir`的路徑是`/var/www/sandbox/xxxxxxxxx/:/tmp/`,`auto_prepend_file`設定的腳本則是`/var/www/sandbox/init.php`  
+在這裡我必須依賴的知識點就是`auto_prepend`選項設定執行的腳本可以通過`ini_set('open_basedir',"/var/www/hosts/$hostname/:/tmp/");`來設置`open_basedir`  
+所以我們只要改`hostname`應該就可以逃逸沙箱了  
+[wp寫得非常詳細](https://xz.aliyun.com/t/2347#toc-2),因此我在這邊只截錄自己的重點
 
 # Web - rblog
 網站頁面有post的功能，經過幾次測試之後我們可以推斷`title`的部分有xss的漏洞(content的部分被轉譯得相當乾淨
