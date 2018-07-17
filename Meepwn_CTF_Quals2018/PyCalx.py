@@ -46,7 +46,7 @@ if 'value1' in arguments and 'value2' in arguments and 'op' in arguments:
     def get_op(val):
         val = str(val)[:2]
         list_ops = ['+','-','/','*','=','!']
-        if val == '' or val[0] not in list_ops:   # 只能輸入單個字元 ＆＆ 白名單
+        if val == '' or val[0] not in list_ops:   
             print('<center>Invalid op</center>')
             sys.exit(0)
         return val
@@ -66,7 +66,7 @@ if 'value1' in arguments and 'value2' in arguments and 'op' in arguments:
 
     try:
         result = str(eval(calc_eval))
-        if result.isdigit() or result == 'True' or result == 'False':   # 兩個串接成True，False也可以
+        if result.isdigit() or result == 'True' or result == 'False':   # 結果只能是數字或布林
             print(result)
         else:
             print("Invalid") # Sorry we don't support output as a string due to security issue.

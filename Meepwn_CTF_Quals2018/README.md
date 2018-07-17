@@ -43,4 +43,31 @@ GET SHELL，我用`show_source("../secret.php")`的方式把內容顯示出來..
 ![](https://farm2.staticflickr.com/1766/42728435404_863eb1e3b7_b.jpg)  
 flag正是`MeePwnCTF{__133-221-333-123-111___}`  
 
-# grandline
+# Grandline
+
+# PyCalx
+這題的代碼就在`PyCalx.py`中，這裡就只給出關鍵代碼。這題就像是計算機的功能：  
+1. 計算結果只能是數字或布林值，所以不會有`'a'+'b'='ab'`的情節發生  
+2. value1跟value2的型態必須相同  
+3. value1跟value2無法閉合  
+但是有一個漏洞  
+```php
+def get_op(val):
+        val = str(val)[:2]
+        list_ops = ['+','-','/','*','=','!']
+        if val == '' or val[0] not in list_ops:   
+            print('<center>Invalid op</center>')
+            sys.exit(0)
+        return val
+```  
+操作符可以輸入兩個字元卻只檢查第一個字元!  
+我們還必須了解計算機的工作細節，如果`value1=a&op=+&value2=b`，那就會出現下面的結果:  
+```php
+>>>> print('a'+'b')
+Invalid
+```  
+首先因為結果不能是字串所以會是invalid，我們還看到value1和value2都會被單引號包起來...  
+所以我們可以控操作符的第二個字元，來閉合value2的第一個單引號。Exploit的原理就如下圖:  
+![](https://farm1.staticflickr.com/918/28572217837_b4ed344f2f_b.jpg)  
+結果是True，運算符是and，就代表`FLAG>source`的結果也要是True(後面的單引號已經被井字號注釋掉了)。這邊我們不能在value中使用字串，也還好我們有`source`和`FLAG`這兩個變數可以用，之後只要fuzzing就能得到FLAG  
+flag正是`MeePwnCTF{python3.66666666666666_([_((you_passed_this?]]]]]])`
