@@ -43,8 +43,6 @@ GET SHELL，我用`show_source("../secret.php")`的方式把內容顯示出來..
 ![](https://farm2.staticflickr.com/1766/42728435404_863eb1e3b7_b.jpg)  
 flag正是`MeePwnCTF{__133-221-333-123-111___}`  
 
-# Grandline
-
 # PyCalx
 這題的代碼就在`PyCalx.py`中，這裡就只給出關鍵代碼。這題就像是計算機的功能：  
 1. 計算結果只能是數字或布林值，所以不會有`'a'+'b'='ab'`的情節發生  
