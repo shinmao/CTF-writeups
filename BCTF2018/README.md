@@ -11,7 +11,7 @@ generate the session file with gob and include it, and when you direct to the pa
 
 ## SimpleVN
 Category: Web  
-Exploit: Code review and I have put the source code in same directory.  
+Exploit: Code review and I have put the source code in same directory. There are some commentsof mine on it.  
 There are two kinds of functionalities in the website:  
 1. screenshot: I can use this to see the screenshot of the subpage of the website.  
 2. upug: upload the pug template, but can only use alphanumeric and dot character.  

@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    title= title
+    link(
+      rel='stylesheet',
+      href='/css/style.css'
+    )
+    link(
+      rel='stylesheet',
+      href='/css/material.min.css'
+    )
+    script(
+      src="/js/material.min.js"
+    )
+  body
+    div.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      header.mdl-layout__header
+        div.mdl-layout__header-row
+          span.mdl-layout-title= title
+          div.mdl-layout-spacer
+          nav.mdl-navigation.mdl-layout--large-screen-only
+            if session.user
+              a.mdl-navigation__link= session.user.username
+              a.mdl-navigation__link(href='/shoot') shoot
+              a.mdl-navigation__link(href='/photo') Photo
+              a.mdl-navigation__link(href='/upug') upug
+              a.mdl-navigation__link(href='/logout') Logout
+            else
+              a.mdl-navigation__link(href='/login') Login
+              a.mdl-navigation__link(href='/register') Register
+    block content

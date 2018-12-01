@@ -1,0 +1,16 @@
+.lr-layout {
+  align-items: center;
+  justify-content: center;
+}
+.lr-layout__content {
+  padding: 124px;
+  flex: none;
+}
+.lr-layout__error {
+  padding: 100px;
+  flex: none;
+}
+.demo-list-item {
+padding: 124px;
+width: 500px;
+}

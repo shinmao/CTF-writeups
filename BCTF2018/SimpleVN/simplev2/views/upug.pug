@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  div.mdl-layout.mdl-js-layout.mdl-color--grey-100.lr-layout
+    main.mdl-layout__content.lr-layout__content
+      if error
+        script.
+          alert('Upug error')
+      if success
+        script.
+          alert('Your PUG template changed')
+      form(action='/upug', method='POST')
+        div.mdl-textfield.mdl-js-textfield
+          textarea.mdl-textfield__input(type='text', name='upug', rows='3', id='upug')
+          label.mdl-textfield__label(for='upug') Your PUG template
+        button.mdl-button.mdl-js-button.mdl-button--primary(type='submit') Submit

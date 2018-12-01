@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div.mdl-layout.mdl-js-layout.mdl-color--grey-100.lr-layout
+    main.mdl-layout__content.lr-layout__content
+      if error
+        span(style="color: red; item: center", class="mdl-chip_text")= error
+      div.mdl-card.mdl-shadow--6dp
+        div.mdl-card__title.mdl-color--primary.mdl-color-text--white
+          h2.mdl-card__title-text Login
+        div.mdl-card__supporting-text
+          form(action='/login', method='POST')
+            div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+              input.mdl-textfield__input(type='text', name='username', pattern='^[_a-zA-Z0-9]{1,36}$', id='username')
+              label.mdl-textfield__label(for='username') Username
+              span.mdl-textfield__error Invalid Username!
+            div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+              input.mdl-textfield__input(type='password', name='password', id='password')
+              label.mdl-textfield__label(for='password') Password
+              span.mdl-textfield__error Invalid Password!
+            button.mdl-button.mdl-js-button.mdl-button--primary(type='submit') Submit

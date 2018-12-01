@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  div.mdl-layout.mdl-js-layout.mdl-color--grey-100.lr-layout
+    main.mdl-layout__content.lr-layout__content
+      if error
+        span(style="color: red; item: center", class="mdl-chip_text")= error
+      if success
+        script.
+          alert('Screenshot will generator soon')
+      form(action='/shoot', method='POST')
+        div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          input.mdl-textfield__input(type='text', name='shooturl', id='url')
+          label.mdl-textfield__label(for='url') URL

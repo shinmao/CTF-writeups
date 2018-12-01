@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  ul.demo-list-item.mdl-list(style="padding: 100px")
+    li.mdl-list__item
+      span.mdl-list__item-primary-content Hello #{session.user.username}
+    li.mdl-list__item
+      span.mdl-list__item-primary-content Your IP is #{remoteIP}
+    li.mdl-list__item
+      span.mdl-list__item-primary-content Welcome to BCTF 2018, Enjoy yourself ^_^

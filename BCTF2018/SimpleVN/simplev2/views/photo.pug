@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  ul.demo-list-item.mdl-list(style="padding: 100px")
+    if images
+      each image in images
+        li.mdl-list__item
+          a.mdl-navigation__link(href=`/screenshots${image.path}`)= image.name
