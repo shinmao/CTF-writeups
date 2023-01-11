@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "dependencies": {
-    "knex": "^0.15.2",
+    "knex": "^2.4.0",
     "mysql": "^2.16.0",
     "puppeteer": "^1.10.0"
   },
